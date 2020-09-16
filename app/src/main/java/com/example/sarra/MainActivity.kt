@@ -148,6 +148,7 @@ class MainActivity : AppCompatActivity() {
     private fun output(txt: String, final: Boolean) {
         runOnUiThread {
             uttAdapter.updateLastNonFinal(txt, final)
+            utteranceList.smoothScrollToPosition(uttAdapter.itemCount)
         }
     }
 }
