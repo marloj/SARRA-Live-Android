@@ -1,5 +1,6 @@
 package com.example.sarra
 
+import android.graphics.Color
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -17,6 +18,7 @@ class UtteranceAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when(holder){
             is UtteranceHolder -> {
+                if(utterances[position].final) holder.text.setTextColor(Color.parseColor("#484d49"))
                 holder.bind(utterances.get(position))
             }
         }
@@ -33,7 +35,6 @@ class UtteranceAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             utterances.add(last)
             this.notifyItemInserted(utterances.lastIndex)
         }
-
         last.text = txt
         last.final = final
         this.notifyItemChanged(utterances.lastIndex, last)
